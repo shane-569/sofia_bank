@@ -7,6 +7,7 @@ import 'package:sofia_bank/features/cards/presentation/cubit/cards_cubit.dart';
 import 'package:sofia_bank/features/cards/presentation/cubit/cards_state.dart';
 import 'package:sofia_bank/features/cards/presentation/widgets/bank_card.dart';
 import 'package:sofia_bank/features/cards/presentation/widgets/card_slider_indicator.dart';
+import 'package:sofia_bank/features/cards/presentation/widgets/quick_actions_menu.dart';
 import 'package:sofia_bank/features/cards/presentation/widgets/transactions_section.dart';
 import 'package:sofia_bank/features/common/widgets/add_button.dart';
 import 'package:sofia_bank/features/cards/presentation/widgets/transaction_list_item.dart';
@@ -134,8 +135,12 @@ class _CardsPageState extends State<CardsPage>
                         width: AppSizes.sliderIndicatorActiveWidth,
                       ),
                       const SizedBox(height: AppSizes.spacingXL),
+                      QuickActionsMenu(
+                        cardId: state.cards[state.selectedCardIndex].id,
+                      ),
+                      const SizedBox(height: AppSizes.spacingXL),
                       Expanded(
-                        child: _buildTransactionsList(state as CardsLoaded),
+                        child: _buildTransactionsList(state),
                       ),
                     ],
                   )

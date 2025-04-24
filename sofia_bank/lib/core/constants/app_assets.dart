@@ -27,4 +27,10 @@ class AppAssets {
   static const String mastercardLogo = 'assets/icons/mastercard_logo.svg';
   static const String amexLogo = 'assets/icons/amex_logo.svg';
   static const String discoverLogo = 'assets/icons/discover_logo.svg';
+
+  static const String userAsset = 'assets/icons/user.svg';
+  static const String homeAsset = 'assets/icons/home.svg';
+  static const String dollarAsset = 'assets/icons/dollar.svg';
+  static const String businessAsset = 'assets/icons/business.svg';
+  static const String carAsset = 'assets/icons/car.svg';
 }

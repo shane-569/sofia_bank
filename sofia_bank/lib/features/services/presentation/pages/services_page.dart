@@ -6,6 +6,8 @@ import 'package:sofia_bank/core/theme/app_colors.dart';
 import 'package:sofia_bank/features/common/widgets/service_grid_item.dart';
 import 'package:sofia_bank/main.dart';
 import 'package:sofia_bank/features/cards/presentation/pages/cards_page.dart';
+import 'package:sofia_bank/features/loans/presentation/pages/loans_page.dart';
+import 'package:sofia_bank/core/routes/app_routes.dart';
 
 class ServicesPage extends StatefulWidget {
   const ServicesPage({Key? key}) : super(key: key);
@@ -19,19 +21,19 @@ class _ServicesPageState extends State<ServicesPage> with RouteAware {
   RouteObserver<PageRoute>? _routeObserver;
 
   void _navigateToCards(BuildContext context) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => const CardsPage(),
-      ),
-    );
+    Navigator.pushNamed(context, AppRoutes.cards);
+  }
+
+  void _navigateToLoans(BuildContext context) {
+    Navigator.pushNamed(context, AppRoutes.loans);
   }
 
   @override
   void initState() {
     super.initState();
-    // Set the onTap callback for Cards
+    // Set the onTap callback for Cards and Loans
     _services[0]['onTap'] = () => _navigateToCards(context);
+    _services[1]['onTap'] = () => _navigateToLoans(context);
 
     // Delay to ensure proper initialization
     WidgetsBinding.instance.addPostFrameCallback((_) {
