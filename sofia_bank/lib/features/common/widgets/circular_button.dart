@@ -11,6 +11,7 @@ class CircularButton extends StatelessWidget {
   final bool isLoading;
   final bool isOutlined;
   final EdgeInsets? padding;
+  final double? elevation;
 
   const CircularButton({
     Key? key,
@@ -22,6 +23,7 @@ class CircularButton extends StatelessWidget {
     this.isLoading = false,
     this.isOutlined = false,
     this.padding,
+    this.elevation = 0,
   }) : super(key: key);
 
   @override
@@ -39,7 +41,7 @@ class CircularButton extends StatelessWidget {
               : (backgroundColor ?? Colors.white),
           foregroundColor:
               iconColor ?? (isOutlined ? Colors.white : AppColors.primary),
-          elevation: isOutlined ? 0 : 1,
+          elevation: elevation,
           padding: padding ?? EdgeInsets.zero,
           shape: CircleBorder(
             side: isOutlined

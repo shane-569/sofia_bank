@@ -5,10 +5,15 @@ import 'package:sofia_bank/core/theme/app_colors.dart';
 import 'package:sofia_bank/core/theme/app_text_theme.dart';
 import 'package:sofia_bank/core/network/network_service.dart';
 
+final RouteObserver<PageRoute> routeObserver = RouteObserver<PageRoute>();
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
-  runApp(const MyApp());
+  runApp(
+    MaterialApp(
+      navigatorObservers: [routeObserver], // Add observer
+      home: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

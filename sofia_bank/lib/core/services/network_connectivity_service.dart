@@ -1,13 +1,14 @@
 import 'dart:async';
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:injectable/injectable.dart';
 
-@singleton
 class NetworkConnectivityService {
+  static final NetworkConnectivityService _instance =
+      NetworkConnectivityService._internal();
+  factory NetworkConnectivityService() => _instance;
+  NetworkConnectivityService._internal();
+
   final _connectivity = Connectivity();
   final _controller = StreamController<ConnectivityResult>.broadcast();
-
-  NetworkConnectivityService();
 
   Stream<ConnectivityResult> get connectivityStream => _controller.stream;
 

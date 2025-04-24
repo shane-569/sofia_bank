@@ -119,7 +119,9 @@ class _SignInPageState extends State<SignInPage> {
                 // Sign In Button
                 CustomButton(
                   text: 'Sign In',
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/home');
+                  },
                 ),
 
                 const SizedBox(height: AppDimensions.xl),

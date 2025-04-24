@@ -1,20 +1,21 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:injectable/injectable.dart';
 import 'package:sofia_bank/core/constants/api_endpoints.dart';
 import 'package:sofia_bank/core/network/api_error_handler.dart';
 import 'package:sofia_bank/core/network/dio_auth_interceptor.dart';
 import 'package:sofia_bank/core/network/dio_network_interceptor.dart';
 import 'package:sofia_bank/core/services/network_connectivity_service.dart';
 
-@singleton
 class NetworkService {
-  final NetworkConnectivityService _connectivityService;
-  late final Dio _dio;
+  static final NetworkService _instance = NetworkService._internal();
+  factory NetworkService() => _instance;
+  NetworkService._internal();
 
-  NetworkService(this._connectivityService);
+  late final Dio _dio;
+  late final NetworkConnectivityService _connectivityService;
 
   void initialize(BuildContext context) {
+    _connectivityService = NetworkConnectivityService();
     _connectivityService.initialize();
 
     _dio = Dio(
@@ -33,7 +34,6 @@ class NetworkService {
         connectivityService: _connectivityService,
       ),
       DioAuthInterceptor(),
-      prettyDioLogger,
     ]);
   }
 
