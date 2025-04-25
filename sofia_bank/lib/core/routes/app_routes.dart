@@ -6,18 +6,21 @@ import 'package:sofia_bank/features/home/presentation/pages/home_page.dart';
 import 'package:sofia_bank/features/services/presentation/pages/services_page.dart';
 import 'package:sofia_bank/features/cards/presentation/pages/cards_page.dart';
 import 'package:sofia_bank/features/loans/presentation/pages/loans_page.dart';
+import 'package:sofia_bank/features/loans/domain/models/loan.dart';
 import 'package:sofia_bank/features/loans/presentation/pages/loan_form_page.dart';
+import 'package:sofia_bank/features/loans/presentation/pages/loan_details_page.dart';
 import 'package:sofia_bank/features/statistics/presentation/pages/statistics_page.dart';
 
 class AppRoutes {
   static const String landing = '/';
   static const String signIn = '/signin';
   static const String signUp = '/signup';
-  static const String home = '/';
+  static const String home = '/home';
   static const String services = '/services';
   static const String cards = '/cards';
   static const String loans = '/loans';
   static const String loanForm = '/loans/form';
+  static const String loanDetails = '/loans/details';
   static const String statistics = '/statistics';
 
   static Map<String, Widget Function(BuildContext)> routes = {
@@ -40,6 +43,10 @@ class AppRoutes {
         minTenure: args['minTenure'],
         maxTenure: args['maxTenure'],
       );
+    },
+    loanDetails: (context) {
+      final loan = ModalRoute.of(context)!.settings.arguments as Loan;
+      return LoanDetailsPage(loan: loan);
     },
   };
 }

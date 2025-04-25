@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:sofia_bank/core/constants/app_sizes.dart';
+import 'package:sofia_bank/core/routes/app_routes.dart';
 import 'package:sofia_bank/core/theme/app_colors.dart';
 import 'package:sofia_bank/features/loans/domain/enums/loan_type.dart';
 import 'package:sofia_bank/features/loans/domain/models/loan.dart';
@@ -162,11 +163,10 @@ class LoansView extends StatelessWidget {
                   child: LoanCard(
                     loan: loan,
                     onTap: () {
-                      Navigator.push(
+                      Navigator.pushNamed(
                         context,
-                        MaterialPageRoute(
-                          builder: (context) => LoanDetailsPage(loan: loan),
-                        ),
+                        AppRoutes.loanDetails,
+                        arguments: loan,
                       );
                     },
                   ),

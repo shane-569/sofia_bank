@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sofia_bank/core/theme/app_colors.dart';
 import 'package:sofia_bank/core/theme/app_dimensions.dart';
 
 class PaymentOption extends StatelessWidget {
@@ -25,12 +26,12 @@ class PaymentOption extends StatelessWidget {
           Container(
             padding: const EdgeInsets.all(AppDimensions.md),
             decoration: BoxDecoration(
-              color: color,
+              color: AppColors.white70,
               borderRadius: BorderRadius.circular(12),
             ),
             child: Icon(
               icon,
-              color: color.withOpacity(0.8),
+              color: AppColors.primary,
               size: 24,
             ),
           ),

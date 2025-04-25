@@ -5,8 +5,6 @@ import 'package:sofia_bank/core/constants/app_assets.dart';
 import 'package:sofia_bank/core/theme/app_colors.dart';
 import 'package:sofia_bank/features/common/widgets/service_grid_item.dart';
 import 'package:sofia_bank/main.dart';
-import 'package:sofia_bank/features/cards/presentation/pages/cards_page.dart';
-import 'package:sofia_bank/features/loans/presentation/pages/loans_page.dart';
 import 'package:sofia_bank/core/routes/app_routes.dart';
 
 class ServicesPage extends StatefulWidget {

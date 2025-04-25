@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sofia_bank/core/navigation/app_pages.dart';
 import 'package:sofia_bank/core/theme/app_colors.dart';
 
 class AppTabBar extends StatelessWidget {
@@ -15,7 +14,7 @@ class AppTabBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 90,
+      height: 80,
       padding: const EdgeInsets.symmetric(vertical: 12),
       decoration: BoxDecoration(
         color: Colors.white,
