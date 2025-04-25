@@ -56,7 +56,7 @@ class LoanCard extends StatelessWidget {
                 'Amount',
                 style: TextStyle(
                   fontSize: 12,
-                  color: AppColors.text.withOpacity(0.6),
+                  color: AppColors.textSecondary.withOpacity(0.6),
                 ),
               ),
               const SizedBox(height: 4),
@@ -65,7 +65,7 @@ class LoanCard extends StatelessWidget {
                 style: const TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.w600,
-                  color: AppColors.text,
+                  color: AppColors.textSecondary,
                 ),
               ),
               const SizedBox(height: 16),
@@ -102,7 +102,7 @@ class LoanCard extends StatelessWidget {
                       'Amount Paid',
                       style: TextStyle(
                         fontSize: 12,
-                        color: AppColors.text.withOpacity(0.6),
+                        color: AppColors.textSecondary.withOpacity(0.6),
                       ),
                     ),
                     Text(
@@ -170,7 +170,7 @@ class LoanCard extends StatelessWidget {
           label,
           style: TextStyle(
             fontSize: 12,
-            color: AppColors.text.withOpacity(0.6),
+            color: AppColors.textSecondary.withOpacity(0.6),
           ),
         ),
         const SizedBox(height: 4),
@@ -179,7 +179,7 @@ class LoanCard extends StatelessWidget {
           style: const TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.w600,
-            color: AppColors.text,
+            color: AppColors.textSecondary,
           ),
         ),
       ],

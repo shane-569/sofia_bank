@@ -9,6 +9,7 @@ import 'package:sofia_bank/features/loans/domain/models/loan_info.dart';
 import 'package:sofia_bank/features/loans/presentation/cubit/loans_cubit.dart';
 import 'package:sofia_bank/features/loans/presentation/cubit/loans_state.dart';
 import 'package:sofia_bank/features/loans/presentation/widgets/loan_card.dart';
+import 'package:sofia_bank/features/loans/presentation/pages/loan_details_page.dart';
 
 class LoansPage extends StatelessWidget {
   const LoansPage({Key? key}) : super(key: key);
@@ -67,6 +68,8 @@ class LoansView extends StatelessWidget {
             tenure: 36,
             startDate: DateTime(2024, 2, 1),
             status: LoanStatus.rejected,
+            emi: 472.50,
+            amountPaid: 0,
           ),
         ];
       default:
@@ -159,7 +162,12 @@ class LoansView extends StatelessWidget {
                   child: LoanCard(
                     loan: loan,
                     onTap: () {
-                      // TODO: Navigate to loan details
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => LoanDetailsPage(loan: loan),
+                        ),
+                      );
                     },
                   ),
                 )),

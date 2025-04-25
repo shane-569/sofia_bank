@@ -40,8 +40,8 @@ class Loan {
   final DateTime startDate;
   final DateTime? endDate;
   final LoanStatus status;
-  final double? emi;
-  final double? amountPaid;
+  final double emi;
+  final double amountPaid;
 
   const Loan({
     required this.id,
@@ -52,7 +52,7 @@ class Loan {
     required this.startDate,
     this.endDate,
     required this.status,
-    this.emi,
-    this.amountPaid,
+    required this.emi,
+    required this.amountPaid,
   });
 }

@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
         appBarTheme: const AppBarTheme(
           backgroundColor: Colors.transparent,
           elevation: 0,
-          iconTheme: IconThemeData(color: AppColors.text),
+          iconTheme: IconThemeData(color: AppColors.textSecondary),
           titleTextStyle: AppTextTheme.appBarTitle,
         ),
         inputDecorationTheme: InputDecorationTheme(
