@@ -26,12 +26,22 @@ class _ServicesPageState extends State<ServicesPage> with RouteAware {
     Navigator.pushNamed(context, AppRoutes.loans);
   }
 
+  void _navigateToDeposits(BuildContext context) {
+    Navigator.pushNamed(context, AppRoutes.deposits);
+  }
+
+  void _navigateToInsurance(BuildContext context) {
+    Navigator.pushNamed(context, AppRoutes.insurance);
+  }
+
   @override
   void initState() {
     super.initState();
     // Set the onTap callback for Cards and Loans
     _services[0]['onTap'] = () => _navigateToCards(context);
     _services[1]['onTap'] = () => _navigateToLoans(context);
+    _services[2]['onTap'] = () => _navigateToDeposits(context);
+    _services[3]['onTap'] = () => _navigateToInsurance(context);
 
     // Delay to ensure proper initialization
     WidgetsBinding.instance.addPostFrameCallback((_) {

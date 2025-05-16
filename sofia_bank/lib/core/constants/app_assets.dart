@@ -33,4 +33,5 @@ class AppAssets {
   static const String dollarAsset = 'assets/icons/dollar.svg';
   static const String businessAsset = 'assets/icons/business.svg';
   static const String carAsset = 'assets/icons/car.svg';
+  static const String rupeeSymbol = 'assets/icons/rupee.svg';
 }

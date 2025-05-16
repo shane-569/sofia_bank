@@ -8,6 +8,9 @@ class AppSizes {
   static const double cardShadowBlur = 20.0;
   static const double cardShadowOffset = 10.0;
   static const double ccCardHeight = 240;
+  static const double icCardWidth = 260;
+  static const double icCardHeight = 36;
+  static const double icButtonWidth = 160;
 
   // Logo Dimensions
   static const double logoWidth = 50.0;
@@ -46,6 +49,7 @@ class AppSizes {
   // Button Sizes
   static const double buttonHeight = 48.0;
   static const double buttonBorderRadius = 12.0;
+  static const double buttonBorderRadiusInsurance = 25.0;
   static const double buttonIconSize = 24.0;
 
   // Input Fields

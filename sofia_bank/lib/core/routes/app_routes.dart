@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:sofia_bank/features/auth/presentation/pages/landing_page.dart';
 import 'package:sofia_bank/features/auth/presentation/pages/sign_in_page.dart';
 import 'package:sofia_bank/features/auth/presentation/pages/sign_up_page.dart';
+import 'package:sofia_bank/features/deposits/presentation/pages/deposits_page.dart';
+import 'package:sofia_bank/features/deposits/presentation/pages/user_deposits_page.dart';
 import 'package:sofia_bank/features/home/presentation/pages/home_page.dart';
 import 'package:sofia_bank/features/services/presentation/pages/services_page.dart';
 import 'package:sofia_bank/features/cards/presentation/pages/cards_page.dart';
@@ -10,6 +12,7 @@ import 'package:sofia_bank/features/loans/domain/models/loan.dart';
 import 'package:sofia_bank/features/loans/presentation/pages/loan_form_page.dart';
 import 'package:sofia_bank/features/loans/presentation/pages/loan_details_page.dart';
 import 'package:sofia_bank/features/statistics/presentation/pages/statistics_page.dart';
+import 'package:sofia_bank/features/insurance/presentation/pages/insurance_page.dart';
 
 class AppRoutes {
   static const String landing = '/';
@@ -22,6 +25,9 @@ class AppRoutes {
   static const String loanForm = '/loans/form';
   static const String loanDetails = '/loans/details';
   static const String statistics = '/statistics';
+  static const String deposits = '/deposits';
+  static const String userdeposits = '/userdeposits';
+  static const String insurance = '/insurance';
 
   static Map<String, Widget Function(BuildContext)> routes = {
     landing: (context) => const LandingPage(),
@@ -48,5 +54,8 @@ class AppRoutes {
       final loan = ModalRoute.of(context)!.settings.arguments as Loan;
       return LoanDetailsPage(loan: loan);
     },
+    deposits: (context) => const DepositsPage(),
+    userdeposits: (context) => const UserDepositsPage(),
+    insurance: (context) => const InsurancePage(),
   };
 }
