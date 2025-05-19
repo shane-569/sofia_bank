@@ -1,7 +1,7 @@
 class AppSizes {
   // Card Dimensions
   static const double cardHeight = 160.0;
-  static const double cardBorderRadius = 20.0;
+  static const double cardBorderRadius = 16.0;
   static const double cardMarginHorizontal = 20.0;
   static const double cardMarginVertical = 10.0;
   static const double cardPadding = 20.0;
@@ -68,4 +68,7 @@ class AppSizes {
   static const double sliderIndicatorHeight = 4.0;
   static const double sliderIndicatorActiveWidth = 24.0;
   static const double sliderIndicatorSpacing = 4.0;
+
+  // Border Radius
+  static const double chipBorderRadius = 20.0;
 }

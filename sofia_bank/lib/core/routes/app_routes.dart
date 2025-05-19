@@ -13,6 +13,7 @@ import 'package:sofia_bank/features/loans/presentation/pages/loan_form_page.dart
 import 'package:sofia_bank/features/loans/presentation/pages/loan_details_page.dart';
 import 'package:sofia_bank/features/statistics/presentation/pages/statistics_page.dart';
 import 'package:sofia_bank/features/insurance/presentation/pages/insurance_page.dart';
+import 'package:sofia_bank/features/insurance/presentation/pages/all_quick_actions_page.dart';
 
 class AppRoutes {
   static const String landing = '/';
@@ -28,6 +29,7 @@ class AppRoutes {
   static const String deposits = '/deposits';
   static const String userdeposits = '/userdeposits';
   static const String insurance = '/insurance';
+  static const String allQuickActions = '/insurance/quick-actions';
 
   static Map<String, Widget Function(BuildContext)> routes = {
     landing: (context) => const LandingPage(),
@@ -57,5 +59,6 @@ class AppRoutes {
     deposits: (context) => const DepositsPage(),
     userdeposits: (context) => const UserDepositsPage(),
     insurance: (context) => const InsurancePage(),
+    allQuickActions: (context) => const AllQuickActionsPage(),
   };
 }

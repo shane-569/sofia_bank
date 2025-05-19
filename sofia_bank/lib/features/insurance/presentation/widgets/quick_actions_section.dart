@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sofia_bank/core/constants/app_sizes.dart';
 import 'package:sofia_bank/core/theme/app_colors.dart';
+import '../../../../core/routes/app_routes.dart';
 import '../../domain/entities/quick_action_entity.dart';
 import 'quick_action_item.dart';
 
@@ -35,7 +36,7 @@ class QuickActionsSection extends StatelessWidget {
               ),
               TextButton(
                 onPressed: () {
-                  // TODO: Navigate to all actions
+                  Navigator.pushNamed(context, AppRoutes.allQuickActions);
                 },
                 child: const Text(
                   'See All',
