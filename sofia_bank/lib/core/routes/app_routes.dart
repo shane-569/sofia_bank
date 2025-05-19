@@ -15,6 +15,9 @@ import 'package:sofia_bank/features/statistics/presentation/pages/statistics_pag
 import 'package:sofia_bank/features/insurance/presentation/pages/insurance_page.dart';
 import 'package:sofia_bank/features/insurance/presentation/pages/all_quick_actions_page.dart';
 
+import '../../features/insurance/presentation/pages/health_insurance_form_page.dart';
+import '../../features/insurance/presentation/pages/bike_insurance_form_page.dart';
+
 class AppRoutes {
   static const String landing = '/';
   static const String signIn = '/signin';
@@ -30,6 +33,8 @@ class AppRoutes {
   static const String userdeposits = '/userdeposits';
   static const String insurance = '/insurance';
   static const String allQuickActions = '/insurance/quick-actions';
+  static const String healthInsuranceForm = '/healthInsuranceForm';
+  static const String bikeInsuranceForm = '/bike-insurance-form';
 
   static Map<String, Widget Function(BuildContext)> routes = {
     landing: (context) => const LandingPage(),
@@ -60,5 +65,7 @@ class AppRoutes {
     userdeposits: (context) => const UserDepositsPage(),
     insurance: (context) => const InsurancePage(),
     allQuickActions: (context) => const AllQuickActionsPage(),
+    healthInsuranceForm: (context) => const HealthInsuranceFormPage(),
+    bikeInsuranceForm: (context) => const BikeInsuranceFormPage(),
   };
 }

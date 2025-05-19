@@ -101,46 +101,64 @@ class _ServicesPageState extends State<ServicesPage> with RouteAware {
       'title': 'Cards',
       'icon': Icons.credit_card,
       'onTap': null, // Will be set in initState
+      'backgroundColor': Color(0xFFFFE0E6), // Pink
+      'iconColor': Color(0xFFE91E63),
     },
     {
       'title': 'Loans',
       'icon': Icons.account_balance,
       'onTap': () {},
+      'backgroundColor': Color(0xFFFFF3E0), // Orange
+      'iconColor': Color(0xFFFF9800),
     },
     {
       'title': 'Deposits',
       'icon': Icons.savings,
       'onTap': () {},
+      'backgroundColor': Color(0xFFEDE7F6), // Purple
+      'iconColor': Color(0xFF673AB7),
     },
     {
       'title': 'Insurance',
       'icon': Icons.health_and_safety,
       'onTap': () {},
+      'backgroundColor': Color(0xFFE3F2FD), // Blue
+      'iconColor': Color(0xFF2196F3),
     },
     {
       'title': 'NRI Services',
       'icon': Icons.public,
       'onTap': () {},
+      'backgroundColor': Color(0xFFFFF9C4), // Yellow
+      'iconColor': Color(0xFFFFEB3B),
     },
     {
       'title': 'Investments',
       'icon': Icons.trending_up,
       'onTap': () {},
+      'backgroundColor': Color(0xFFE0F2F1), // Teal
+      'iconColor': Color(0xFF009688),
     },
     {
       'title': 'Bill Pay',
       'icon': Icons.receipt_long,
       'onTap': () {},
+      'backgroundColor': Color(0xFFFFEBEE), // Red
+      'iconColor': Color(0xFFF44336),
     },
     {
       'title': 'Transfers',
       'icon': Icons.swap_horiz,
       'onTap': () {},
+      'backgroundColor': Color(0xFFE8F5E9), // Green
+      'iconColor': Color(0xFF4CAF50),
     },
     {
       'title': 'More',
       'icon': Icons.grid_view,
       'onTap': () {},
+      'backgroundColor': Color(0xFFF3E5F5), // Lavender
+      'iconColor': Color(0xFF9C27B0),
     },
   ];
 
@@ -244,6 +262,8 @@ class _ServicesPageState extends State<ServicesPage> with RouteAware {
                     icon: service['icon'],
                     onTap: service['onTap'],
                     index: index,
+                    backgroundColor: service['backgroundColor'],
+                    iconColor: service['iconColor'],
                     isVisible: _isVisible,
                     row: row,
                     col: col,

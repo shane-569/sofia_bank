@@ -12,6 +12,8 @@ class ServiceGridItem extends StatefulWidget {
   final bool isVisible;
   final int row;
   final int col;
+  final Color backgroundColor;
+  final Color iconColor;
 
   const ServiceGridItem({
     Key? key,
@@ -22,6 +24,8 @@ class ServiceGridItem extends StatefulWidget {
     required this.isVisible,
     required this.row,
     required this.col,
+    required this.backgroundColor,
+    required this.iconColor,
   }) : super(key: key);
 
   @override
@@ -121,11 +125,11 @@ class _ServiceGridItemState extends State<ServiceGridItem>
         onTap: widget.onTap,
         child: Container(
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: widget.iconColor.withOpacity(0.2),
             borderRadius: BorderRadius.circular(AppDimensions.radiusMd),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.05),
+                color: AppColors.shadow.withOpacity(0.08),
                 blurRadius: 10,
                 offset: const Offset(0, 2),
               ),
@@ -144,8 +148,8 @@ class _ServiceGridItemState extends State<ServiceGridItem>
                       AppAssets.linesCurvy,
                       width: 120,
                       height: 120,
-                      colorFilter: const ColorFilter.mode(
-                        AppColors.primary,
+                      colorFilter: ColorFilter.mode(
+                        widget.backgroundColor,
                         BlendMode.srcIn,
                       ),
                     ),
@@ -156,15 +160,18 @@ class _ServiceGridItemState extends State<ServiceGridItem>
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
-                        padding: const EdgeInsets.all(16),
+                        width: 48,
+                        height: 48,
                         decoration: BoxDecoration(
-                          color: AppColors.primary.withOpacity(0.1),
+                          color: widget.backgroundColor,
                           shape: BoxShape.circle,
                         ),
-                        child: Icon(
-                          widget.icon,
-                          color: AppColors.primary,
-                          size: 32,
+                        child: Center(
+                          child: Icon(
+                            widget.icon,
+                            color: widget.iconColor,
+                            size: 32,
+                          ),
                         ),
                       ),
                       const SizedBox(height: 12),
@@ -173,7 +180,7 @@ class _ServiceGridItemState extends State<ServiceGridItem>
                         child: Text(
                           widget.title,
                           style: const TextStyle(
-                            color: AppColors.primary,
+                            color: AppColors.text,
                             fontSize: 14,
                             fontWeight: FontWeight.w500,
                           ),

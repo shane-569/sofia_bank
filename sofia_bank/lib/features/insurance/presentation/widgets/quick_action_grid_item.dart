@@ -19,9 +19,9 @@ class QuickActionGridItem extends StatelessWidget {
         borderRadius: BorderRadius.circular(AppSizes.cardBorderRadius),
         boxShadow: [
           BoxShadow(
-            color: AppColors.shadow.withOpacity(0.05),
-            blurRadius: 10,
-            offset: const Offset(0, 2),
+            color: AppColors.shadow.withOpacity(0.08),
+            blurRadius: 12,
+            offset: const Offset(0, 4),
           ),
         ],
       ),
@@ -35,20 +35,22 @@ class QuickActionGridItem extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(AppSizes.spacingLG),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Container(
-                  padding: const EdgeInsets.all(AppSizes.spacingSM),
+                  width: 48,
+                  height: 48,
                   decoration: BoxDecoration(
                     color: action.backgroundColor,
-                    borderRadius:
-                        BorderRadius.circular(AppSizes.cardBorderRadius),
+                    shape: BoxShape.circle,
                   ),
-                  child: Icon(
-                    action.icon,
-                    color: action.iconColor,
-                    size: AppSizes.iconMD,
+                  child: Center(
+                    child: Icon(
+                      action.icon,
+                      color: action.iconColor,
+                      size: AppSizes.iconLG,
+                    ),
                   ),
                 ),
                 const SizedBox(height: AppSizes.spacingMD),
@@ -59,6 +61,7 @@ class QuickActionGridItem extends StatelessWidget {
                     fontSize: AppSizes.textMD,
                     fontWeight: FontWeight.w600,
                   ),
+                  textAlign: TextAlign.center,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),
@@ -69,6 +72,7 @@ class QuickActionGridItem extends StatelessWidget {
                     color: AppColors.textSecondary,
                     fontSize: AppSizes.textSM,
                   ),
+                  textAlign: TextAlign.center,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),

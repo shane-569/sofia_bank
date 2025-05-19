@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sofia_bank/core/constants/app_sizes.dart';
+import 'package:sofia_bank/core/routes/app_routes.dart';
 import 'package:sofia_bank/core/theme/app_colors.dart';
 import '../../domain/entities/wellness_category_entity.dart';
 import 'wellness_category_item.dart';
@@ -54,7 +55,11 @@ class WellnessSection extends StatelessWidget {
               return WellnessCategoryItem(
                 category: categories[index],
                 onTap: () {
-                  // TODO: Navigate to category details
+                  if (categories[index].title == 'Health') {
+                    Navigator.pushNamed(context, '/healthInsuranceForm');
+                  } else if (categories[index].title == 'Bike') {
+                    Navigator.pushNamed(context, '/bike-insurance-form');
+                  }
                 },
               );
             },
