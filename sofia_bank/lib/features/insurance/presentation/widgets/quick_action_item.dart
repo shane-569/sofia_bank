@@ -16,7 +16,11 @@ class QuickActionItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: onTap,
+      onTap: () {
+        if (action.title == 'File a Claim') {
+          Navigator.pushNamed(context, '/file-claim');
+        }
+      },
       borderRadius: BorderRadius.circular(AppSizes.cardBorderRadius),
       child: Container(
         padding: const EdgeInsets.all(AppSizes.spacingLG),

@@ -17,6 +17,7 @@ import 'package:sofia_bank/features/insurance/presentation/pages/all_quick_actio
 
 import '../../features/insurance/presentation/pages/health_insurance_form_page.dart';
 import '../../features/insurance/presentation/pages/bike_insurance_form_page.dart';
+import '../../features/insurance/presentation/pages/file_claim_form_page.dart';
 
 class AppRoutes {
   static const String landing = '/';
@@ -35,6 +36,7 @@ class AppRoutes {
   static const String allQuickActions = '/insurance/quick-actions';
   static const String healthInsuranceForm = '/healthInsuranceForm';
   static const String bikeInsuranceForm = '/bike-insurance-form';
+  static const String fileClaimForm = '/file-claim';
 
   static Map<String, Widget Function(BuildContext)> routes = {
     landing: (context) => const LandingPage(),
@@ -67,5 +69,6 @@ class AppRoutes {
     allQuickActions: (context) => const AllQuickActionsPage(),
     healthInsuranceForm: (context) => const HealthInsuranceFormPage(),
     bikeInsuranceForm: (context) => const BikeInsuranceFormPage(),
+    fileClaimForm: (context) => const FileClaimFormPage(),
   };
 }
