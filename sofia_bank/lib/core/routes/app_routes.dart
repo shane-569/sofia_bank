@@ -5,6 +5,7 @@ import 'package:sofia_bank/features/auth/presentation/pages/sign_in_page.dart';
 import 'package:sofia_bank/features/auth/presentation/pages/sign_up_page.dart';
 import 'package:sofia_bank/features/deposits/presentation/pages/deposits_page.dart';
 import 'package:sofia_bank/features/deposits/presentation/pages/user_deposits_page.dart';
+import 'package:sofia_bank/features/fast_tag/presentation/pages/fast_tag_wallet_page.dart';
 import 'package:sofia_bank/features/home/presentation/pages/home_page.dart';
 import 'package:sofia_bank/features/services/presentation/pages/services_page.dart';
 import 'package:sofia_bank/features/cards/presentation/pages/cards_page.dart';
@@ -19,6 +20,7 @@ import 'package:sofia_bank/features/fast_tag/presentation/pages/fast_tag_page.da
 import 'package:sofia_bank/features/fast_tag/presentation/pages/fast_tag_dashboard_page.dart';
 import 'package:sofia_bank/features/fast_tag/presentation/cubit/fast_tag_cubit.dart';
 import 'package:sofia_bank/features/fast_tag/presentation/cubit/fast_tag_dashboard_cubit.dart';
+import 'package:sofia_bank/features/fast_tag/presentation/cubit/fast_tag_wallet_cubit.dart';
 
 import '../../features/insurance/presentation/pages/health_insurance_form_page.dart';
 import '../../features/insurance/presentation/pages/bike_insurance_form_page.dart';
@@ -44,6 +46,7 @@ class AppRoutes {
   static const String fileClaimForm = '/file-claim';
   static const String fastTag = '/fast-tag';
   static const String fastTagDashboard = '/fast-tag-dashboard';
+  static const String fastTagWallet = '/fastTagWallet';
 
   static Map<String, Widget Function(BuildContext)> routes = {
     landing: (context) => const LandingPage(),
@@ -84,6 +87,10 @@ class AppRoutes {
     fastTagDashboard: (context) => BlocProvider(
           create: (context) => FastTagDashboardCubit(),
           child: const FastTagDashboardPage(),
+        ),
+    fastTagWallet: (context) => BlocProvider(
+          create: (context) => FastTagWalletCubit(),
+          child: const FastTagWalletPage(),
         ),
   };
 }

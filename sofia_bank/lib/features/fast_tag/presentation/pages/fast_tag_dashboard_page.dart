@@ -281,10 +281,8 @@ class _FastTagDashboardPageState extends State<FastTagDashboardPage> {
                         width: 120,
                         child: ElevatedButton(
                           onPressed: () {
-                            _showRechargeDialog(context
-                                .read<FastTagDashboardCubit>()
-                                .state
-                                .selectedFastTag!['id']);
+                            Navigator.pushNamed(
+                                context, AppRoutes.fastTagWallet);
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: AppColors.orange,
@@ -543,46 +541,6 @@ class _FastTagDashboardPageState extends State<FastTagDashboardPage> {
             ),
           ],
         ),
-      ),
-    );
-  }
-
-  void _showRechargeDialog(String tagId) {
-    final amountController = TextEditingController();
-
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Recharge Fast Tag'),
-        content: TextField(
-          controller: amountController,
-          keyboardType: TextInputType.number,
-          decoration: const InputDecoration(
-            labelText: 'Amount',
-            prefixText: '₹ ',
-            hintText: 'Enter amount to recharge',
-          ),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('Cancel'),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              if (amountController.text.isNotEmpty) {
-                context
-                    .read<FastTagDashboardCubit>()
-                    .rechargeFastTag(tagId, amountController.text);
-                Navigator.pop(context);
-              }
-            },
-            style: ElevatedButton.styleFrom(
-              backgroundColor: AppColors.primary,
-            ),
-            child: const Text('Recharge'),
-          ),
-        ],
       ),
     );
   }

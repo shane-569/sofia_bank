@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sofia_bank/core/theme/app_colors.dart';
-import 'package:sofia_bank/core/constants/app_sizes.dart';
 import 'package:sofia_bank/features/fast_tag/presentation/cubit/fast_tag_registration_cubit.dart';
 
 class FastTagPage extends StatelessWidget {
