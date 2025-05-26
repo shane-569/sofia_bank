@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sofia_bank/features/auth/presentation/pages/landing_page.dart';
 import 'package:sofia_bank/features/auth/presentation/pages/sign_in_page.dart';
 import 'package:sofia_bank/features/auth/presentation/pages/sign_up_page.dart';
@@ -14,6 +15,10 @@ import 'package:sofia_bank/features/loans/presentation/pages/loan_details_page.d
 import 'package:sofia_bank/features/statistics/presentation/pages/statistics_page.dart';
 import 'package:sofia_bank/features/insurance/presentation/pages/insurance_page.dart';
 import 'package:sofia_bank/features/insurance/presentation/pages/all_quick_actions_page.dart';
+import 'package:sofia_bank/features/fast_tag/presentation/pages/fast_tag_page.dart';
+import 'package:sofia_bank/features/fast_tag/presentation/pages/fast_tag_dashboard_page.dart';
+import 'package:sofia_bank/features/fast_tag/presentation/cubit/fast_tag_cubit.dart';
+import 'package:sofia_bank/features/fast_tag/presentation/cubit/fast_tag_dashboard_cubit.dart';
 
 import '../../features/insurance/presentation/pages/health_insurance_form_page.dart';
 import '../../features/insurance/presentation/pages/bike_insurance_form_page.dart';
@@ -37,6 +42,8 @@ class AppRoutes {
   static const String healthInsuranceForm = '/healthInsuranceForm';
   static const String bikeInsuranceForm = '/bike-insurance-form';
   static const String fileClaimForm = '/file-claim';
+  static const String fastTag = '/fast-tag';
+  static const String fastTagDashboard = '/fast-tag-dashboard';
 
   static Map<String, Widget Function(BuildContext)> routes = {
     landing: (context) => const LandingPage(),
@@ -70,5 +77,13 @@ class AppRoutes {
     healthInsuranceForm: (context) => const HealthInsuranceFormPage(),
     bikeInsuranceForm: (context) => const BikeInsuranceFormPage(),
     fileClaimForm: (context) => const FileClaimFormPage(),
+    fastTag: (context) => BlocProvider(
+          create: (context) => FastTagCubit(),
+          child: const FastTagPage(),
+        ),
+    fastTagDashboard: (context) => BlocProvider(
+          create: (context) => FastTagDashboardCubit(),
+          child: const FastTagDashboardPage(),
+        ),
   };
 }

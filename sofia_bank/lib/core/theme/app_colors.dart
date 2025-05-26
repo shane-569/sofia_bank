@@ -15,6 +15,7 @@ class AppColors {
   static const Color border = Color(0xFFE8E8E8);
   static const Color white70 = Color(0xB3FFFFFF);
   static const Color shadow = Color(0xFF000000);
+  static const Color orange = Color.fromARGB(255, 255, 149, 0);
 
   // Gradient colors
   static const Color gradientStart = Color(0xFF4FA5B2);

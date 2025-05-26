@@ -16,7 +16,6 @@ class ServicesPage extends StatefulWidget {
 
 class _ServicesPageState extends State<ServicesPage> with RouteAware {
   bool _isVisible = false;
-  RouteObserver<PageRoute>? _routeObserver;
 
   void _navigateToCards(BuildContext context) {
     Navigator.pushNamed(context, AppRoutes.cards);
@@ -34,6 +33,10 @@ class _ServicesPageState extends State<ServicesPage> with RouteAware {
     Navigator.pushNamed(context, AppRoutes.insurance);
   }
 
+  void _navigateToFastTag(BuildContext context) {
+    Navigator.pushNamed(context, AppRoutes.fastTagDashboard);
+  }
+
   @override
   void initState() {
     super.initState();
@@ -42,6 +45,7 @@ class _ServicesPageState extends State<ServicesPage> with RouteAware {
     _services[1]['onTap'] = () => _navigateToLoans(context);
     _services[2]['onTap'] = () => _navigateToDeposits(context);
     _services[3]['onTap'] = () => _navigateToInsurance(context);
+    _services[4]['onTap'] = () => _navigateToFastTag(context);
 
     // Delay to ensure proper initialization
     WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -52,23 +56,12 @@ class _ServicesPageState extends State<ServicesPage> with RouteAware {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    routeObserver.unsubscribe(this);
     routeObserver.subscribe(this, ModalRoute.of(context) as PageRoute);
-    // _routeObserver?.unsubscribe(this);
-    // _routeObserver = ModalRoute.of(context)
-    //     ?.navigator
-    //     ?.widget
-    //     .observers
-    //     .whereType<RouteObserver<PageRoute>>()
-    //     .firstOrNull;
-    // if (_routeObserver != null) {
-    //   _routeObserver!.subscribe(this, ModalRoute.of(context)! as PageRoute);
-    // }
   }
 
   @override
   void dispose() {
-    _routeObserver?.unsubscribe(this);
+    routeObserver.unsubscribe(this);
     super.dispose();
   }
 
@@ -124,6 +117,13 @@ class _ServicesPageState extends State<ServicesPage> with RouteAware {
       'onTap': () {},
       'backgroundColor': Color(0xFFE3F2FD), // Blue
       'iconColor': Color(0xFF2196F3),
+    },
+    {
+      'title': 'Fast Tag',
+      'icon': Icons.car_rental,
+      'onTap': () {},
+      'backgroundColor': Color(0xFFE8F5E9), // Green
+      'iconColor': Color(0xFF4CAF50),
     },
     {
       'title': 'NRI Services',
