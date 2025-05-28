@@ -9,6 +9,7 @@ class AppColors {
   static const Color background = Colors.white;
   static const Color text = Color(0xFF1A1A1A);
   static const Color textSecondary = Color(0xFF666666);
+  static const Color divider = Color.fromARGB(237, 205, 205, 205);
   static const Color error = Color(0xFFD32F2F);
   static const Color success = Color(0xFF388E3C);
   static const Color warning = Color(0xFFF57C00);

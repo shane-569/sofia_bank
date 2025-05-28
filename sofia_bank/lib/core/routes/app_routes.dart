@@ -5,6 +5,8 @@ import 'package:sofia_bank/features/auth/presentation/pages/sign_in_page.dart';
 import 'package:sofia_bank/features/auth/presentation/pages/sign_up_page.dart';
 import 'package:sofia_bank/features/deposits/presentation/pages/deposits_page.dart';
 import 'package:sofia_bank/features/deposits/presentation/pages/user_deposits_page.dart';
+import 'package:sofia_bank/features/fast_tag/presentation/pages/fast_tag_success_page.dart';
+import 'package:sofia_bank/features/fast_tag/presentation/pages/fast_tag_transaction_page.dart';
 import 'package:sofia_bank/features/fast_tag/presentation/pages/fast_tag_wallet_page.dart';
 import 'package:sofia_bank/features/home/presentation/pages/home_page.dart';
 import 'package:sofia_bank/features/services/presentation/pages/services_page.dart';
@@ -21,10 +23,15 @@ import 'package:sofia_bank/features/fast_tag/presentation/pages/fast_tag_dashboa
 import 'package:sofia_bank/features/fast_tag/presentation/cubit/fast_tag_cubit.dart';
 import 'package:sofia_bank/features/fast_tag/presentation/cubit/fast_tag_dashboard_cubit.dart';
 import 'package:sofia_bank/features/fast_tag/presentation/cubit/fast_tag_wallet_cubit.dart';
+import 'package:sofia_bank/features/fast_tag/presentation/cubit/fast_tag_transaction_cubit.dart';
 
 import '../../features/insurance/presentation/pages/health_insurance_form_page.dart';
 import '../../features/insurance/presentation/pages/bike_insurance_form_page.dart';
 import '../../features/insurance/presentation/pages/file_claim_form_page.dart';
+import '../../features/fast_tag/presentation/pages/contact_and_support_page.dart';
+import '../../features/fast_tag/presentation/pages/vehicle_details_page.dart';
+import '../../features/fast_tag/presentation/cubit/vehicle_details/vehicle_details_cubit.dart';
+import 'package:sofia_bank/features/fast_tag/presentation/pages/fast_tag_tracking_page.dart';
 
 class AppRoutes {
   static const String landing = '/';
@@ -47,6 +54,11 @@ class AppRoutes {
   static const String fastTag = '/fast-tag';
   static const String fastTagDashboard = '/fast-tag-dashboard';
   static const String fastTagWallet = '/fastTagWallet';
+  static const String fastTagSuccess = '/fastTagSuccess';
+  static const String fastTagTransactions = '/fastTagTransactions';
+  static const String contactAndSupport = '/contactAndSupport';
+  static const String vehicleDetails = '/vehicleDetails';
+  static const String fasttagTracking = '/fasttagTracking';
 
   static Map<String, Widget Function(BuildContext)> routes = {
     landing: (context) => const LandingPage(),
@@ -92,5 +104,16 @@ class AppRoutes {
           create: (context) => FastTagWalletCubit(),
           child: const FastTagWalletPage(),
         ),
+    fastTagSuccess: (context) => const FastTagSuccessPage(),
+    fastTagTransactions: (context) => BlocProvider(
+          create: (context) => FastTagTransactionCubit(),
+          child: const FastTagTransactionPage(),
+        ),
+    contactAndSupport: (context) => const ContactAndSupportPage(),
+    vehicleDetails: (context) => BlocProvider(
+          create: (context) => VehicleDetailsCubit(),
+          child: const VehicleDetailsPage(),
+        ),
+    fasttagTracking: (context) => const FasttagTrackingPage(),
   };
 }

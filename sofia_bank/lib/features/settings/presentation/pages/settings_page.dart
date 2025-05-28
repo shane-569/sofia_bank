@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sofia_bank/core/theme/app_colors.dart';
 import 'package:sofia_bank/features/settings/presentation/widgets/settings_list_item.dart';
+import 'package:sofia_bank/core/routes/app_routes.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({Key? key}) : super(key: key);
@@ -94,6 +95,13 @@ class SettingsPage extends StatelessWidget {
                   SettingsListItem(
                     title: 'State',
                     onTap: () {},
+                    showDivider: false,
+                  ),
+                  SettingsListItem(
+                    title: 'Contact and Support',
+                    onTap: () {
+                      Navigator.pushNamed(context, AppRoutes.contactAndSupport);
+                    },
                     showDivider: false,
                   ),
                 ],

@@ -4,6 +4,7 @@ class AppAssets {
   static const String linesWavy = 'assets/icons/lines_wavy.svg';
   static const String linesZigzag = 'assets/icons/lines_zigzag.svg';
   static const String wavey = 'assets/icons/wavey.svg';
+  static const String fasttag = 'assets/icons/fasttag.svg';
   // Images
   static const String cardsBg = 'assets/images/cards_bg.png';
   static const String loansBg = 'assets/images/loans_bg.png';

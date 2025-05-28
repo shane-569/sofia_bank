@@ -18,10 +18,6 @@ class ReviewDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<FastTagCubit, FastTagState>(
       builder: (context, state) {
-        final vehicleDetails = state.vehicleDetails;
-        final personalDetails = state.personalDetails;
-        final rechargeDetails = state.rechargeDetails;
-
         return SingleChildScrollView(
           padding: const EdgeInsets.all(16),
           child: Column(
@@ -31,31 +27,39 @@ class ReviewDetails extends StatelessWidget {
                 'Vehicle Details',
                 [
                   _buildDetailRow(
-                      'Vehicle Number', vehicleDetails?['vehicleNumber'] ?? ''),
-                  _buildDetailRow(
-                      'Vehicle Type', vehicleDetails?['vehicleType'] ?? ''),
-                  _buildDetailRow(
-                      'Vehicle Class', vehicleDetails?['vehicleClass'] ?? ''),
+                      'Registering Authority', state.registeringAuthority),
+                  _buildDetailRow('Registration No', state.vehicleNumber),
+                  _buildDetailRow('Registration Date', state.registrationDate),
+                  _buildDetailRow('Chassis No', state.chasisNumber),
+                  _buildDetailRow('Engine No', state.engineNumber),
+                  _buildDetailRow('Owner Name', state.ownerName),
+                  _buildDetailRow('Vehicle Class', state.vehicleClass),
+                  _buildDetailRow('Fuel', state.fuelType),
+                  _buildDetailRow('Maker / Model', state.makerModel),
+                  _buildDetailRow('Fitness/REGN Upto', state.fitnessUpto),
+                  _buildDetailRow('MV Tax upto', state.mvTaxUpto),
+                  _buildDetailRow('Insurance Upto', state.insuranceExpiry),
+                  _buildDetailRow('PUCC Upto', state.puccUpto),
+                  _buildDetailRow('Emission norms', state.emissionNorms),
+                  _buildDetailRow('RC Status', state.rcStatus),
                 ],
               ),
               const SizedBox(height: 24),
               _buildSection(
                 'Personal Details',
                 [
-                  _buildDetailRow('Name', personalDetails?['name'] ?? ''),
-                  _buildDetailRow('Email', personalDetails?['email'] ?? ''),
-                  _buildDetailRow('Phone', personalDetails?['phone'] ?? ''),
-                  _buildDetailRow('Address', personalDetails?['address'] ?? ''),
+                  _buildDetailRow('Pan Card', state.panCard),
+                  _buildDetailRow('Date of Birth', state.dob),
+                  _buildDetailRow('Mobile Number', state.mobileNumber),
+                  _buildDetailRow('Email', state.email),
+                  _buildDetailRow('Address', state.address),
                 ],
               ),
               const SizedBox(height: 24),
               _buildSection(
                 'Recharge Details',
                 [
-                  _buildDetailRow(
-                      'Amount', '₹${rechargeDetails?['amount'] ?? ''}'),
-                  _buildDetailRow('Payment Method',
-                      rechargeDetails?['paymentMethod'] ?? ''),
+                  _buildDetailRow('Loading Status', state.isLoading.toString()),
                 ],
               ),
               const SizedBox(height: 32),
@@ -73,12 +77,12 @@ class ReviewDetails extends StatelessWidget {
                   const SizedBox(width: 16),
                   Expanded(
                     child: ElevatedButton(
-                      onPressed: state.isReviewLoading ? null : onSubmit,
+                      onPressed: state.isLoading ? null : onSubmit,
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppColors.primary,
                         padding: const EdgeInsets.symmetric(vertical: 16),
                       ),
-                      child: state.isReviewLoading
+                      child: state.isLoading
                           ? const CircularProgressIndicator()
                           : const Text('Submit'),
                     ),

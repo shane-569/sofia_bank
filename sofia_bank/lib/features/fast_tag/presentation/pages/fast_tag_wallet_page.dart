@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sofia_bank/core/routes/app_routes.dart';
 import 'package:sofia_bank/core/theme/app_colors.dart';
 import '../../domain/entities/payment_option.dart';
 import '../cubit/fast_tag_wallet_cubit.dart';
 import '../cubit/fast_tag_wallet_state.dart';
+import 'fast_tag_success_page.dart';
 
 class FastTagWalletPage extends StatefulWidget {
   const FastTagWalletPage({super.key});
@@ -180,15 +182,30 @@ class _FastTagWalletPageState extends State<FastTagWalletPage> {
                       ),
                     ],
                   ),
+
+                  // Payment Details Form Section
+                  BlocBuilder<FastTagWalletCubit, FastTagWalletState>(
+                    builder: (context, state) {
+                      switch (state.selectedPaymentOption) {
+                        case PaymentOption.upi:
+                          return _buildUpiForm(context, state);
+                        case PaymentOption.card:
+                          return _buildCardForm(context, state);
+                        case PaymentOption.netBanking:
+                          return _buildNetBankingForm(context, state);
+                        case null:
+                          return const SizedBox.shrink(); // No option selected
+                      }
+                    },
+                  ),
                   const SizedBox(height: 20),
 
                   // Proceed Button
                   ElevatedButton(
                     onPressed: () {
-                      final currentAmount =
-                          context.read<FastTagWalletCubit>().state.amount;
-                      print('Proceeding with amount: $currentAmount');
-                      // TODO: Implement navigation and payment logic
+                      // TODO: Implement actual payment processing logic here.
+                      // On successful payment, navigate to the success page.
+                      Navigator.pushNamed(context, AppRoutes.fastTagSuccess);
                     },
                     style: ElevatedButton.styleFrom(
                       padding: const EdgeInsets.symmetric(vertical: 15),
@@ -270,6 +287,131 @@ class _FastTagWalletPageState extends State<FastTagWalletPage> {
           ),
         ),
       ),
+    );
+  }
+
+  // Helper function to build the UPI form
+  Widget _buildUpiForm(BuildContext context, FastTagWalletState state) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Text(
+          'Enter UPI ID',
+          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+        ),
+        const SizedBox(height: 10),
+        TextField(
+          keyboardType: TextInputType.text,
+          decoration: const InputDecoration(
+            labelText: 'UPI ID',
+            border: OutlineInputBorder(),
+          ),
+          onChanged: (value) {
+            context.read<FastTagWalletCubit>().updateUpiId(value);
+          },
+          controller: TextEditingController(text: state.upiId),
+        ),
+      ],
+    );
+  }
+
+  // Helper function to build the Card form
+  Widget _buildCardForm(BuildContext context, FastTagWalletState state) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Text(
+          'Enter Card Details',
+          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+        ),
+        const SizedBox(height: 10),
+        TextField(
+          keyboardType: TextInputType.number,
+          decoration: const InputDecoration(
+            labelText: 'Card Number',
+            border: OutlineInputBorder(),
+          ),
+          onChanged: (value) {
+            // Basic regex for card number (simplified, adjust as needed)
+            if (RegExp(r'^[0-9]{13,19}$').hasMatch(value)) {
+              context.read<FastTagWalletCubit>().updateCardNumber(value);
+            } else {
+              context
+                  .read<FastTagWalletCubit>()
+                  .updateCardNumber(null); // Clear if invalid
+            }
+          },
+          controller: TextEditingController(text: state.cardNumber),
+        ),
+        const SizedBox(height: 10),
+        Row(
+          children: [
+            Expanded(
+              child: TextField(
+                keyboardType: TextInputType.datetime,
+                decoration: const InputDecoration(
+                  labelText: 'Expiry Date (MM/YY)',
+                  border: OutlineInputBorder(),
+                ),
+                onChanged: (value) {
+                  // Basic regex for expiry date (MM/YY)
+                  if (RegExp(r'^(0[1-9]|1[0-2])\/?([0-9]{2})$')
+                      .hasMatch(value)) {
+                    context.read<FastTagWalletCubit>().updateExpiryDate(value);
+                  } else {
+                    context.read<FastTagWalletCubit>().updateExpiryDate(null);
+                  }
+                },
+                controller: TextEditingController(text: state.expiryDate),
+              ),
+            ),
+            SizedBox(width: 10),
+            Expanded(
+              child: TextField(
+                keyboardType: TextInputType.number,
+                decoration: const InputDecoration(
+                  labelText: 'CVV',
+                  border: OutlineInputBorder(),
+                ),
+                onChanged: (value) {
+                  // Basic regex for CVV (3 or 4 digits)
+                  if (RegExp(r'^[0-9]{3,4}$').hasMatch(value)) {
+                    context.read<FastTagWalletCubit>().updateCvv(value);
+                  } else {
+                    context.read<FastTagWalletCubit>().updateCvv(null);
+                  }
+                },
+                controller: TextEditingController(text: state.cvv),
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
+  // Helper function to build the Net Banking form (simplified)
+  Widget _buildNetBankingForm(BuildContext context, FastTagWalletState state) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Text(
+          'Enter Net Banking Details',
+          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+        ),
+        const SizedBox(height: 10),
+        TextField(
+          keyboardType: TextInputType.text,
+          decoration: const InputDecoration(
+            labelText: 'Bank Name or Details',
+            border: OutlineInputBorder(),
+          ),
+          onChanged: (value) {
+            context.read<FastTagWalletCubit>().updateNetBankingDetails(value);
+          },
+          controller: TextEditingController(text: state.netBankingDetails),
+        ),
+      ],
     );
   }
 }

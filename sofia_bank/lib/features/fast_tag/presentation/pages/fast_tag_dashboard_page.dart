@@ -32,6 +32,14 @@ class _FastTagDashboardPageState extends State<FastTagDashboardPage> {
         title: const Text('Fast Tag'),
         backgroundColor: AppColors.white70,
         elevation: 0,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.settings),
+            onPressed: () {
+              Navigator.pushNamed(context, AppRoutes.contactAndSupport);
+            },
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
@@ -89,7 +97,7 @@ class _FastTagDashboardPageState extends State<FastTagDashboardPage> {
                   Container(
                     padding: const EdgeInsets.all(16),
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: AppColors.secondary.withOpacity(0.1),
                       borderRadius: BorderRadius.circular(12),
                       boxShadow: [
                         BoxShadow(
@@ -108,13 +116,15 @@ class _FastTagDashboardPageState extends State<FastTagDashboardPage> {
                           children: [
                             const Text('Fast Tag Details',
                                 style: TextStyle(
-                                    fontWeight: FontWeight.w600, fontSize: 16)),
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 16,
+                                    color: AppColors.primary)),
                             Container(
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 8, vertical: 4),
                               decoration: BoxDecoration(
-                                color: AppColors.primary.withOpacity(0.1),
-                                borderRadius: BorderRadius.circular(4),
+                                color: AppColors.gradientEnd.withOpacity(0.5),
+                                borderRadius: BorderRadius.circular(12),
                               ),
                               child: Text(
                                   context
@@ -137,7 +147,7 @@ class _FastTagDashboardPageState extends State<FastTagDashboardPage> {
                                 children: [
                                   const Text('Tag ID',
                                       style: TextStyle(
-                                          color: AppColors.textSecondary,
+                                          color: AppColors.primary,
                                           fontSize: 13)),
                                   const SizedBox(height: 4),
                                   Text(
@@ -156,7 +166,7 @@ class _FastTagDashboardPageState extends State<FastTagDashboardPage> {
                                 children: [
                                   const Text('Vehicle Type',
                                       style: TextStyle(
-                                          color: AppColors.textSecondary,
+                                          color: AppColors.primary,
                                           fontSize: 13)),
                                   const SizedBox(height: 4),
                                   Text(
@@ -180,7 +190,7 @@ class _FastTagDashboardPageState extends State<FastTagDashboardPage> {
                                 children: [
                                   const Text('Last Recharge',
                                       style: TextStyle(
-                                          color: AppColors.textSecondary,
+                                          color: AppColors.primary,
                                           fontSize: 13)),
                                   const SizedBox(height: 4),
                                   Text(
@@ -199,7 +209,7 @@ class _FastTagDashboardPageState extends State<FastTagDashboardPage> {
                                 children: [
                                   const Text('Balance',
                                       style: TextStyle(
-                                          color: AppColors.textSecondary,
+                                          color: AppColors.primary,
                                           fontSize: 13)),
                                   const SizedBox(height: 4),
                                   Text(
@@ -301,7 +311,10 @@ class _FastTagDashboardPageState extends State<FastTagDashboardPage> {
                   const SizedBox(height: 16),
                   const Divider(),
                   InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.pushNamed(
+                          context, AppRoutes.fastTagTransactions);
+                    },
                     child: const Padding(
                       padding: EdgeInsets.symmetric(vertical: 8),
                       child: Row(
@@ -325,6 +338,83 @@ class _FastTagDashboardPageState extends State<FastTagDashboardPage> {
                   ),
                 ],
               ),
+            ),
+            const SizedBox(height: 20),
+            // Vehicle Details and Track Fast Tag Cards
+            Row(
+              children: [
+                Expanded(
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.pushNamed(context, AppRoutes.vehicleDetails);
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.all(16),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(12),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.08),
+                            blurRadius: 12,
+                            offset: const Offset(0, 4),
+                            spreadRadius: 0,
+                          ),
+                        ],
+                      ),
+                      child: const Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Icon(Icons.directions_car_outlined,
+                              color: AppColors.orange, size: 30),
+                          SizedBox(height: 8),
+                          Text(
+                            'Vehicle Details',
+                            style: TextStyle(fontWeight: FontWeight.w500),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 16),
+                Expanded(
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.pushNamed(context, AppRoutes.fasttagTracking);
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.all(16),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(12),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.08),
+                            blurRadius: 12,
+                            offset: const Offset(0, 4),
+                            spreadRadius: 0,
+                          ),
+                        ],
+                      ),
+                      child: const Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Icon(Icons.local_offer_outlined,
+                              color: AppColors.orange, size: 30),
+                          SizedBox(height: 8),
+                          Text(
+                            'Track Fast Tag',
+                            style: TextStyle(fontWeight: FontWeight.w500),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
             const SizedBox(height: 20),
             // Toll Fare Calculator
@@ -530,6 +620,51 @@ class _FastTagDashboardPageState extends State<FastTagDashboardPage> {
                     const SizedBox(width: 16),
                     const Expanded(
                       child: Text('Issue New FASTTAG',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w500, fontSize: 16)),
+                    ),
+                    const Icon(Icons.chevron_right,
+                        color: AppColors.textSecondary),
+                  ],
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(context, AppRoutes.fastTag);
+              },
+              child: Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 18),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(12),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.08),
+                      blurRadius: 12,
+                      offset: const Offset(0, 4),
+                      spreadRadius: 0,
+                    ),
+                  ],
+                ),
+                child: Row(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        color: AppColors.orange.withOpacity(0.08),
+                        shape: BoxShape.circle,
+                      ),
+                      child: const Icon(Icons.find_replace,
+                          color: AppColors.orange, size: 28),
+                    ),
+                    const SizedBox(width: 16),
+                    const Expanded(
+                      child: Text('Replace Fast Tag',
                           style: TextStyle(
                               fontWeight: FontWeight.w500, fontSize: 16)),
                     ),

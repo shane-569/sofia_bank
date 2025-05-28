@@ -46,11 +46,18 @@ class FastTagDashboardCubit extends Cubit<FastTagDashboardState> {
         },
       ];
 
-      // Find the initial selected Fast Tag
-      Map<String, dynamic>? initialSelectedFastTag;
+      String currentSelectedVehicle = state.selectedVehicle;
+      Map<String, dynamic>? selectedFastTagData = state.selectedFastTag;
+
+      // If no vehicle is selected initially, select the first one from the fetched list
+      if (currentSelectedVehicle.isEmpty && fastTags.isNotEmpty) {
+        currentSelectedVehicle = fastTags.first['vehicleNumber'] as String;
+      }
+
+      // Find the selected Fast Tag data based on the selected vehicle
       for (var tag in fastTags) {
-        if (tag['vehicleNumber'] == state.selectedVehicle) {
-          initialSelectedFastTag = tag;
+        if (tag['vehicleNumber'] == currentSelectedVehicle) {
+          selectedFastTagData = tag;
           break;
         }
       }
@@ -58,7 +65,11 @@ class FastTagDashboardCubit extends Cubit<FastTagDashboardState> {
       emit(state.copyWith(
         status: FastTagDashboardStatus.loaded,
         fastTags: fastTags,
-        selectedFastTag: initialSelectedFastTag,
+        vehicles: fastTags
+            .map((tag) => tag['vehicleNumber'] as String)
+            .toList(), // Update vehicles list from fetched data
+        selectedVehicle: currentSelectedVehicle,
+        selectedFastTag: selectedFastTagData,
       ));
     } catch (e) {
       emit(state.copyWith(
