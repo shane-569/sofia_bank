@@ -24,6 +24,14 @@ import 'package:sofia_bank/features/fast_tag/presentation/cubit/fast_tag_cubit.d
 import 'package:sofia_bank/features/fast_tag/presentation/cubit/fast_tag_dashboard_cubit.dart';
 import 'package:sofia_bank/features/fast_tag/presentation/cubit/fast_tag_wallet_cubit.dart';
 import 'package:sofia_bank/features/fast_tag/presentation/cubit/fast_tag_transaction_cubit.dart';
+import 'package:sofia_bank/features/investment/presentation/pages/investment_page.dart';
+import 'package:sofia_bank/features/investment/presentation/pages/crypto_trading_page.dart';
+import 'package:sofia_bank/features/investment/presentation/cubit/crypto_cubit.dart';
+import 'package:sofia_bank/features/investment/presentation/pages/top_movers_page.dart';
+import 'package:sofia_bank/features/investment/presentation/pages/crypto_details_page.dart';
+import 'package:sofia_bank/features/investment/domain/models/crypto_asset.dart';
+import 'package:sofia_bank/features/investment/presentation/pages/send_confirmation_page.dart';
+import 'package:sofia_bank/features/investment/presentation/pages/token_selection_page.dart';
 
 import '../../features/insurance/presentation/pages/health_insurance_form_page.dart';
 import '../../features/insurance/presentation/pages/bike_insurance_form_page.dart';
@@ -32,6 +40,7 @@ import '../../features/fast_tag/presentation/pages/contact_and_support_page.dart
 import '../../features/fast_tag/presentation/pages/vehicle_details_page.dart';
 import '../../features/fast_tag/presentation/cubit/vehicle_details/vehicle_details_cubit.dart';
 import 'package:sofia_bank/features/fast_tag/presentation/pages/fast_tag_tracking_page.dart';
+import 'package:sofia_bank/features/investment/presentation/pages/send_page.dart';
 
 class AppRoutes {
   static const String landing = '/';
@@ -59,6 +68,12 @@ class AppRoutes {
   static const String contactAndSupport = '/contactAndSupport';
   static const String vehicleDetails = '/vehicleDetails';
   static const String fasttagTracking = '/fasttagTracking';
+  static const String investment = '/investment';
+  static const String cryptoTrading = '/crypto-trading';
+  static const String topMovers = '/top-movers';
+  static const String cryptoDetails = '/crypto-details';
+  static const String send = '/send';
+  static const String sendConfirmation = '/send-confirmation';
 
   static Map<String, Widget Function(BuildContext)> routes = {
     landing: (context) => const LandingPage(),
@@ -115,5 +130,15 @@ class AppRoutes {
           child: const VehicleDetailsPage(),
         ),
     fasttagTracking: (context) => const FasttagTrackingPage(),
+    investment: (context) => const InvestmentPage(),
+    cryptoTrading: (context) => const CryptoTradingPage(),
+    topMovers: (context) => BlocProvider(
+          create: (context) => CryptoCubit()..loadCryptoAssets(),
+          child: const TopMoversPage(),
+        ),
+    cryptoDetails: (context) => CryptoDetailsPage(
+        asset: ModalRoute.of(context)!.settings.arguments as CryptoAsset),
+    send: (context) => const SendPage(),
+    sendConfirmation: (context) => const SendConfirmationPage(),
   };
 }

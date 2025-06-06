@@ -37,6 +37,10 @@ class _ServicesPageState extends State<ServicesPage> with RouteAware {
     Navigator.pushNamed(context, AppRoutes.fastTagDashboard);
   }
 
+  void _navigateToInvestment(BuildContext context) {
+    Navigator.pushNamed(context, AppRoutes.investment);
+  }
+
   @override
   void initState() {
     super.initState();
@@ -46,6 +50,7 @@ class _ServicesPageState extends State<ServicesPage> with RouteAware {
     _services[2]['onTap'] = () => _navigateToDeposits(context);
     _services[3]['onTap'] = () => _navigateToInsurance(context);
     _services[4]['onTap'] = () => _navigateToFastTag(context);
+    _services[6]['onTap'] = () => _navigateToInvestment(context);
 
     // Delay to ensure proper initialization
     WidgetsBinding.instance.addPostFrameCallback((_) {
