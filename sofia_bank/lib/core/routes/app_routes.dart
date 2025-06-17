@@ -9,6 +9,7 @@ import 'package:sofia_bank/features/fast_tag/presentation/pages/fast_tag_success
 import 'package:sofia_bank/features/fast_tag/presentation/pages/fast_tag_transaction_page.dart';
 import 'package:sofia_bank/features/fast_tag/presentation/pages/fast_tag_wallet_page.dart';
 import 'package:sofia_bank/features/home/presentation/pages/home_page.dart';
+import 'package:sofia_bank/features/investment/presentation/bloc/mutual_funds_bloc.dart';
 import 'package:sofia_bank/features/services/presentation/pages/services_page.dart';
 import 'package:sofia_bank/features/cards/presentation/pages/cards_page.dart';
 import 'package:sofia_bank/features/loans/presentation/pages/loans_page.dart';
@@ -32,6 +33,7 @@ import 'package:sofia_bank/features/investment/presentation/pages/crypto_details
 import 'package:sofia_bank/features/investment/domain/models/crypto_asset.dart';
 import 'package:sofia_bank/features/investment/presentation/pages/send_confirmation_page.dart';
 import 'package:sofia_bank/features/investment/presentation/pages/token_selection_page.dart';
+import 'package:sofia_bank/features/investment/presentation/pages/mutual_funds_page.dart';
 
 import '../../features/insurance/presentation/pages/health_insurance_form_page.dart';
 import '../../features/insurance/presentation/pages/bike_insurance_form_page.dart';
@@ -41,6 +43,9 @@ import '../../features/fast_tag/presentation/pages/vehicle_details_page.dart';
 import '../../features/fast_tag/presentation/cubit/vehicle_details/vehicle_details_cubit.dart';
 import 'package:sofia_bank/features/fast_tag/presentation/pages/fast_tag_tracking_page.dart';
 import 'package:sofia_bank/features/investment/presentation/pages/send_page.dart';
+
+import '../../features/investment/presentation/bloc/mutual_funds_cubit.dart';
+import 'package:sofia_bank/features/investment/data/repositories/mutual_fund_repository_impl.dart';
 
 class AppRoutes {
   static const String landing = '/';
@@ -74,6 +79,7 @@ class AppRoutes {
   static const String cryptoDetails = '/crypto-details';
   static const String send = '/send';
   static const String sendConfirmation = '/send-confirmation';
+  static const String mutualFunds = '/mutual-funds';
 
   static Map<String, Widget Function(BuildContext)> routes = {
     landing: (context) => const LandingPage(),
@@ -140,5 +146,11 @@ class AppRoutes {
         asset: ModalRoute.of(context)!.settings.arguments as CryptoAsset),
     send: (context) => const SendPage(),
     sendConfirmation: (context) => const SendConfirmationPage(),
+    mutualFunds: (context) => BlocProvider(
+          create: (context) => MutualFundsBloc(
+            repository: MutualFundRepositoryImpl(),
+          )..add(LoadMutualFunds()),
+          child: const MutualFundsPage(),
+        ),
   };
 }

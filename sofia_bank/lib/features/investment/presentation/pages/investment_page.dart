@@ -133,7 +133,7 @@ class _InvestmentPageState extends State<InvestmentPage>
                       backgroundColor: const Color(0xFFE8F5E9),
                       iconColor: const Color(0xFF4CAF50),
                       onTap: () {
-                        // TODO: Navigate to mutual funds page
+                        Navigator.pushNamed(context, AppRoutes.mutualFunds);
                       },
                     ),
                   ],

@@ -73,7 +73,7 @@ class _LoanDetailsView extends StatelessWidget {
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
-                color: AppColors.text,
+                color: AppColors.textPrimary,
               ),
             ),
             const SizedBox(height: 16),
@@ -180,7 +180,7 @@ class _LoanDetailsView extends StatelessWidget {
           Text(
             value,
             style: const TextStyle(
-              color: AppColors.text,
+              color: AppColors.textPrimary,
               fontSize: 14,
               fontWeight: FontWeight.w500,
             ),

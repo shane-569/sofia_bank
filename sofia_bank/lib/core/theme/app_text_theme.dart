@@ -10,19 +10,19 @@ class AppTextTheme {
           fontFamily: fontFamily,
           fontSize: 57,
           fontWeight: FontWeight.w400,
-          color: AppColors.text,
+          color: AppColors.textPrimary,
         ),
         displayMedium: TextStyle(
           fontFamily: fontFamily,
           fontSize: 45,
           fontWeight: FontWeight.w400,
-          color: AppColors.text,
+          color: AppColors.textPrimary,
         ),
         displaySmall: TextStyle(
           fontFamily: fontFamily,
           fontSize: 36,
           fontWeight: FontWeight.w400,
-          color: AppColors.text,
+          color: AppColors.textPrimary,
         ),
 
         // Headline styles
@@ -30,19 +30,19 @@ class AppTextTheme {
           fontFamily: fontFamily,
           fontSize: 32,
           fontWeight: FontWeight.w600,
-          color: AppColors.text,
+          color: AppColors.textPrimary,
         ),
         headlineMedium: TextStyle(
           fontFamily: fontFamily,
           fontSize: 28,
           fontWeight: FontWeight.w600,
-          color: AppColors.text,
+          color: AppColors.textPrimary,
         ),
         headlineSmall: TextStyle(
           fontFamily: fontFamily,
           fontSize: 24,
           fontWeight: FontWeight.w600,
-          color: AppColors.text,
+          color: AppColors.textPrimary,
         ),
 
         // Title styles
@@ -50,19 +50,19 @@ class AppTextTheme {
           fontFamily: fontFamily,
           fontSize: 22,
           fontWeight: FontWeight.w600,
-          color: AppColors.text,
+          color: AppColors.textPrimary,
         ),
         titleMedium: TextStyle(
           fontFamily: fontFamily,
           fontSize: 16,
           fontWeight: FontWeight.w600,
-          color: AppColors.text,
+          color: AppColors.textPrimary,
         ),
         titleSmall: TextStyle(
           fontFamily: fontFamily,
           fontSize: 14,
           fontWeight: FontWeight.w600,
-          color: AppColors.text,
+          color: AppColors.textPrimary,
         ),
 
         // Body styles
@@ -70,19 +70,19 @@ class AppTextTheme {
           fontFamily: fontFamily,
           fontSize: 16,
           fontWeight: FontWeight.w400,
-          color: AppColors.text,
+          color: AppColors.textPrimary,
         ),
         bodyMedium: TextStyle(
           fontFamily: fontFamily,
           fontSize: 14,
           fontWeight: FontWeight.w400,
-          color: AppColors.text,
+          color: AppColors.textPrimary,
         ),
         bodySmall: TextStyle(
           fontFamily: fontFamily,
           fontSize: 12,
           fontWeight: FontWeight.w400,
-          color: AppColors.textSecondary,
+          color: AppColors.textPrimary,
         ),
 
         // Label styles
@@ -90,19 +90,19 @@ class AppTextTheme {
           fontFamily: fontFamily,
           fontSize: 14,
           fontWeight: FontWeight.w500,
-          color: AppColors.text,
+          color: AppColors.textPrimary,
         ),
         labelMedium: TextStyle(
           fontFamily: fontFamily,
           fontSize: 12,
           fontWeight: FontWeight.w500,
-          color: AppColors.text,
+          color: AppColors.textPrimary,
         ),
         labelSmall: TextStyle(
           fontFamily: fontFamily,
           fontSize: 11,
           fontWeight: FontWeight.w500,
-          color: AppColors.textSecondary,
+          color: AppColors.textPrimary,
         ),
       );
 
@@ -118,20 +118,20 @@ class AppTextTheme {
     fontFamily: fontFamily,
     fontSize: 18,
     fontWeight: FontWeight.w600,
-    color: AppColors.text,
+    color: AppColors.textPrimary,
   );
 
   static const TextStyle inputLabel = TextStyle(
     fontFamily: fontFamily,
     fontSize: 14,
     fontWeight: FontWeight.w500,
-    color: AppColors.textSecondary,
+    color: AppColors.textPrimary,
   );
 
   static const TextStyle inputText = TextStyle(
     fontFamily: fontFamily,
     fontSize: 16,
     fontWeight: FontWeight.w400,
-    color: AppColors.text,
+    color: AppColors.textPrimary,
   );
 }
